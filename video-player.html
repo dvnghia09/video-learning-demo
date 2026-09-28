@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nội dung khoá học</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-bold text-blue-600">LearningDemo</a>
+                    <div class="hidden md:flex space-x-8 ml-10">
+                        <a href="index.html" class="text-gray-500 hover:text-blue-600 font-medium">Trang chủ</a>
+                        <a href="courses.html" class="text-gray-500 hover:text-blue-600 font-medium">Danh sách khoá học</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <a href="login.html" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md font-medium">Đăng xuất</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Breadcrumb -->
+        <div class="mb-4 text-sm text-gray-500">
+            <a href="index.html" class="hover:text-blue-600">Trang chủ</a> &gt; 
+            <a href="courses.html" class="hover:text-blue-600">Danh sách khoá học</a> &gt; 
+            <a href="course-detail.html" class="hover:text-blue-600">Lập trình Web Cơ bản</a> &gt;
+            <span>Bài 1</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Video Player Area (Takes up 2 columns on large screens) -->
+            <div class="lg:col-span-2">
+                <!-- Video Placeholder -->
+                <div class="bg-black rounded-lg aspect-video flex items-center justify-center relative overflow-hidden shadow-lg">
+                    <video controls class="w-full h-full object-cover">
+                        <!-- Example dummy video -->
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        Trình duyệt của bạn không hỗ trợ thẻ video.
+                    </video>
+                </div>
+                
+                <div class="mt-6">
+                    <h1 class="text-2xl font-bold mb-2">Bài 1: Giới thiệu về HTML & CSS</h1>
+                    <p class="text-gray-600">Trong bài học đầu tiên này, chúng ta sẽ tìm hiểu về cấu trúc cơ bản của một trang web sử dụng HTML và cách trang trí nó bằng CSS. Đây là những kiến thức nền tảng nhất để bắt đầu hành trình trở thành Web Developer.</p>
+                </div>
+            </div>
+
+            <!-- Playlist Area -->
+            <div class="bg-white rounded-lg shadow-md p-4 h-fit">
+                <h2 class="text-xl font-bold mb-4 border-b pb-2">Danh sách bài học</h2>
+                
+                <div class="space-y-3">
+                    
+                    <!-- Video 1 (Free/Unlocked) -->
+                    <div class="flex items-center p-3 bg-blue-50 border-l-4 border-blue-600 rounded cursor-pointer">
+                        <div class="w-12 h-12 bg-blue-200 rounded flex items-center justify-center text-blue-700 shrink-0">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="font-semibold text-sm">Bài 1: Giới thiệu HTML & CSS</h3>
+                            <p class="text-xs text-green-600 font-medium">Đang phát (Miễn phí)</p>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 (Premium/Locked) -->
+                    <div class="flex items-center p-3 bg-gray-50 border-l-4 border-gray-200 rounded opacity-75 hover:bg-gray-100 transition" onclick="showUpgradeModal()">
+                        <div class="w-12 h-12 bg-gray-200 rounded flex items-center justify-center text-gray-500 shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        </div>
+                        <div class="ml-4 cursor-pointer">
+                            <h3 class="font-semibold text-sm text-gray-700">Bài 2: Các thẻ HTML cơ bản</h3>
+                            <p class="text-xs text-red-500 font-medium">Yêu cầu nâng cấp</p>
+                        </div>
+                    </div>
+
+                    <!-- Video 3 (Premium/Locked) -->
+                    <div class="flex items-center p-3 bg-gray-50 border-l-4 border-gray-200 rounded opacity-75 hover:bg-gray-100 transition" onclick="showUpgradeModal()">
+                        <div class="w-12 h-12 bg-gray-200 rounded flex items-center justify-center text-gray-500 shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        </div>
+                        <div class="ml-4 cursor-pointer">
+                            <h3 class="font-semibold text-sm text-gray-700">Bài 3: Cấu trúc CSS và Selector</h3>
+                            <p class="text-xs text-red-500 font-medium">Yêu cầu nâng cấp</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Upgrade Banner in Sidebar -->
+                <div class="mt-8 bg-yellow-50 p-4 rounded-lg border border-yellow-200 text-center">
+                    <h3 class="font-bold text-yellow-800 mb-2">Khoá học giới hạn!</h3>
+                    <p class="text-sm text-yellow-700 mb-4">Bạn cần nâng cấp tài khoản để xem toàn bộ nội dung khoá học này.</p>
+                    <a href="https://zalo.me/0123456789" target="_blank" class="inline-block bg-yellow-500 text-white font-bold py-2 px-4 rounded hover:bg-yellow-600 transition w-full">
+                        Liên hệ Zalo nâng cấp
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Upgrade Modal (Hidden by default) -->
+    <div id="upgradeModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white rounded-lg p-8 max-w-sm w-full mx-4 relative shadow-2xl">
+            <button onclick="closeUpgradeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 mb-4">
+                    <svg class="h-6 w-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+                <h3 class="text-lg leading-6 font-bold text-gray-900 mb-2">Yêu cầu nâng cấp tài khoản</h3>
+                <p class="text-sm text-gray-600 mb-6">Bài học này thuộc nội dung trả phí. Bạn cần <strong>Đăng nhập</strong> và <strong>Liên hệ Admin</strong> để nâng cấp gói tài khoản mới có thể xem tiếp.</p>
+                
+                <div class="space-y-3">
+                    <a href="login.html" class="w-full flex justify-center items-center bg-gray-800 text-white font-bold py-2 px-4 rounded hover:bg-gray-900 transition">
+                        Đi tới trang Đăng nhập
+                    </a>
+                    <a href="https://zalo.me/0123456789" target="_blank" class="w-full flex justify-center items-center bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition">
+                        Liên hệ Zalo Admin
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showUpgradeModal() {
+            document.getElementById('upgradeModal').classList.remove('hidden');
+        }
+        function closeUpgradeModal() {
+            document.getElementById('upgradeModal').classList.add('hidden');
+        }
+    </script>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-10 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">LearningDemo</h3>
+                    <p class="text-sm">Nền tảng học trực tuyến chất lượng cao, giúp bạn nâng tầm kỹ năng và thăng tiến trong công việc.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Liên kết nhanh</h4>
+                    <ul class="text-sm space-y-2">
+                        <li><a href="index.html" class="hover:text-white transition">Trang chủ</a></li>
+                        <li><a href="courses.html" class="hover:text-white transition">Danh sách khoá học</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Hỗ trợ</h4>
+                    <ul class="text-sm space-y-2">
+                        <li>Email: hotro@learningdemo.com</li>
+                        <li>Zalo: <a href="https://zalo.me/0123456789" class="hover:text-white transition text-blue-400">0123.456.789</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-sm text-center text-gray-400">
+                &copy; 2026 LearningDemo. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -85,12 +85,12 @@
             <form class="mt-8 space-y-6" action="index.html" method="GET">
                 <div class="rounded-md shadow-sm space-y-4">
                     <div>
-                        <label for="email-address" class="sr-only">Số điện thoại</label>
-                        <input id="phone-number" name="phone" type="tel" pattern="[0-9]*" autocomplete="tel" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-pink-500 focus:border-pink-500 focus:z-10 sm:text-sm" placeholder="Số điện thoại">
+                        <label for="phone-number" class="block text-lg font-bold text-gray-700 mb-2">Số điện thoại <span class="text-red-500">*</span></label>
+                        <input id="phone-number" name="phone" type="tel" pattern="[0-9]*" autocomplete="tel" required class="appearance-none  relative block w-full px-4 py-3 border-2 border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-pink-500 focus:border-pink-500 focus:z-10 text-lg" placeholder="Số điện thoại">
                     </div>
                     <div>
-                        <label for="password" class="sr-only">Mật khẩu</label>
-                        <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-pink-500 focus:border-pink-500 focus:z-10 sm:text-sm" placeholder="Mật khẩu">
+                        <label for="password" class="block text-lg font-bold text-gray-700 mb-2 mt-4">Mật khẩu <span class="text-red-500">*</span></label>
+                        <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none  relative block w-full px-4 py-3 border-2 border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-pink-500 focus:border-pink-500 focus:z-10 text-lg" placeholder="Mật khẩu">
                     </div>
                 </div>
 
@@ -110,14 +110,19 @@
                 </div>
 
                 <div>
-                    <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-pink-500 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
+                    <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-lg font-bold rounded-md text-white bg-pink-500 py-3 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
                         Đăng nhập
                     </button>
                 </div>
             
-                <div class="text-center mt-4 text-sm text-gray-600">
-                    Chưa có tài khoản? <a href="register.html" class="text-pink-600 hover:text-pink-500 font-medium">Đăng ký ngay</a>
+                
+                <div class="text-center mt-8 pt-6 border-t border-gray-200">
+                    <p class="text-gray-600 mb-4 text-lg">Bạn chưa có tài khoản?</p>
+                    <a href="register.html" class="inline-block w-full flex justify-center py-3 px-4 border-2 border-pink-500 text-pink-600 font-bold rounded-md hover:bg-pink-50 transition text-lg">
+                        Tạo tài khoản mới (Đăng ký)
+                    </a>
                 </div>
+
             </form>
         </div>
     </div>

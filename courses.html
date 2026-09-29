@@ -102,10 +102,19 @@
 
         <h1 class="text-3xl font-bold mb-10 text-gray-900 text-center">Nội dung khóa học</h1>
         
-        <div class="max-w-3xl mx-auto space-y-4">
+        
+        <div class="max-w-3xl mx-auto mb-8 relative">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <svg class="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+            <input type="text" id="searchInput" onkeyup="searchLessons()" placeholder="Nhập tên bài học cần tìm..." class="w-full pl-12 pr-4 py-4 rounded-lg border border-gray-300 focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200 transition shadow-sm text-gray-700 font-medium">
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-4" id="lessonList">
+
             
             <!-- Bài 1 -->
-            <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+            <div class="lesson-card bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
                 <button onclick="toggleAccordion('lesson1')" class="w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-pink-50 transition">
                     <h2 class="text-xl font-bold text-gray-800">Bài 1: Cắm hoa cổng vòm</h2>
                     <svg id="icon-lesson1" class="w-6 h-6 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -144,7 +153,7 @@
             </div>
 
             <!-- Bài 2 -->
-            <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+            <div class="lesson-card bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
                 <button onclick="toggleAccordion('lesson2')" class="w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-pink-50 transition">
                     <h2 class="text-xl font-bold text-gray-800">Bài 2: Cắm hoa cổng vuông</h2>
                     <svg id="icon-lesson2" class="w-6 h-6 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -183,7 +192,7 @@
             </div>
 
             <!-- Bài 3 -->
-            <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+            <div class="lesson-card bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
                 <button onclick="toggleAccordion('lesson3')" class="w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-pink-50 transition">
                     <h2 class="text-xl font-bold text-gray-800">Bài 3: Cắm hoa cổng ngà voi</h2>
                     <svg id="icon-lesson3" class="w-6 h-6 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -222,7 +231,7 @@
             </div>
 
             <!-- Bài 4 -->
-            <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+            <div class="lesson-card bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
                 <button onclick="toggleAccordion('lesson4')" class="w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-pink-50 transition">
                     <h2 class="text-xl font-bold text-gray-800">Bài 4: Cắm hoa theo mô hình</h2>
                     <svg id="icon-lesson4" class="w-6 h-6 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -295,6 +304,21 @@
     <script>
         // Mở sẵn Bài 2 theo yêu cầu thiết kế ảnh mẫu
         document.getElementById('icon-lesson2').classList.add('rotate-180');
+
+        
+        function searchLessons() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('lesson-card');
+            
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].querySelector('h2').innerText.toLowerCase();
+                if (title.indexOf(input) > -1) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
 
         function toggleAccordion(id) {
             const content = document.getElementById(id);

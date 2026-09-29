@@ -1,67 +1,10 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang chủ - Nghệ thuật cắm hoa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        html { font-size: 18px; }
-        body { font-family: 'Roboto', sans-serif; letter-spacing: 0.02em; }
-    </style>
+import re
 
-    <style>
-        .zalo-floating-btn {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-        }
+filepath = '/Users/nghiadv/Projects/video-learning-demo/index.html'
+with open(filepath, 'r', encoding='utf-8') as f:
+    content = f.read()
 
-        @media (max-width: 768px) {
-            .zalo-floating-btn {
-                bottom: 16px;
-                right: 16px;
-            }
-        }
-
-        .zalo-icon-wrap {
-            width: 60px;
-            height: 60px;
-            background-color: #0068ff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            animation: zalo-pulse 2s infinite;
-        }
-
-        .zalo-icon-wrap img {
-            width: 35px;
-            height: 35px;
-            object-fit: contain;
-            animation: zalo-shake 2s infinite ease-in-out;
-        }
-
-        @keyframes zalo-pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(0, 104, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0); }
-        }
-
-        @keyframes zalo-shake {
-            0%, 100% { transform: rotate(0deg); }
-            10%, 30%, 50%, 70%, 90% { transform: rotate(-10deg) scale(1.1); }
-            20%, 40%, 60%, 80% { transform: rotate(10deg) scale(1.1); }
-        }
-    </style>
-</head>
-<body class="bg-white text-gray-800">
+new_body_content = """
     <!-- Navbar -->
     <nav class="bg-white shadow-md border-b border-gray-100 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -184,5 +127,17 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Icon_of_Zalo.svg/1024px-Icon_of_Zalo.svg.png" alt="Zalo">
         </div>
     </a>
-</body>
-</html>
+"""
+
+start_tag = '<body class="bg-white text-gray-800">'
+end_tag = '</body>'
+
+start_idx = content.find(start_tag) + len(start_tag)
+end_idx = content.find(end_tag)
+
+content = content[:start_idx] + new_body_content + content[end_idx:]
+
+with open(filepath, 'w', encoding='utf-8') as f:
+    f.write(content)
+
+print("Updated index.html successfully")

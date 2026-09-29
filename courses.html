@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh sách bài học - Nghệ thuật cắm hoa</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .accordion-content {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-content.open {
+            max-height: 500px; /* Đủ lớn để chứa danh sách video */
+            opacity: 1;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
@@ -28,61 +40,135 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         
-        <div class="mb-4 text-sm text-gray-500">
+        <div class="mb-6 text-sm text-gray-500">
             <a href="index.html" class="hover:text-pink-500">Trang chủ</a> &gt; <span>Danh sách bài học</span>
         </div>
 
-        <h1 class="text-3xl font-bold mb-8 text-gray-900">Danh sách bài học: Nghệ thuật cắm hoa đương đại</h1>
+        <h1 class="text-3xl font-bold mb-10 text-gray-900 text-center">Nội dung khóa học</h1>
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="max-w-3xl mx-auto space-y-4">
             
-            <!-- Lesson Card 1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=600&q=80" alt="Bài 1" class="w-full h-48 object-cover">
-                    <span class="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">Miễn phí</span>
-                </div>
-                <div class="p-6 flex-grow flex flex-col">
-                    <div class="text-sm text-pink-500 font-semibold mb-2">Bài 1</div>
-                    <h2 class="text-xl font-bold mb-2">Làm quen dụng cụ và các loại hoa cơ bản</h2>
-                    <p class="text-gray-600 mb-4 flex-grow">Hướng dẫn chọn kéo, mút xốp, bình hoa và cách bảo quản hoa tươi lâu nhất cho người mới bắt đầu.</p>
-                    <a href="video-player.html" class="inline-block bg-pink-50 text-pink-600 border border-pink-200 px-4 py-2 rounded font-semibold hover:bg-pink-100 transition w-full text-center mt-auto">Vào học ngay</a>
+            <!-- Bài 1 -->
+            <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                <button onclick="toggleAccordion('lesson1')" class="w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-pink-50 transition">
+                    <h2 class="text-xl font-bold text-gray-800">Bài 1: Cắm hoa cổng vòm</h2>
+                    <svg id="icon-lesson1" class="w-6 h-6 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="lesson1" class="accordion-content bg-gray-50 border-t border-gray-100">
+                    <div class="p-6 space-y-3">
+                        <!-- Video Item -->
+                        <div class="flex items-center justify-between p-3 bg-white border border-gray-200 rounded hover:border-pink-300 transition">
+                            <div class="flex items-center">
+                                <span class="w-10 h-10 bg-pink-100 text-pink-500 flex items-center justify-center rounded-full mr-4">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"></path></svg>
+                                </span>
+                                <div>
+                                    <span class="block font-medium text-gray-800">Video 1: Chuẩn bị khung vòm</span>
+                                    <span class="text-xs text-gray-500">10:25</span>
+                                </div>
+                            </div>
+                            <a href="video-player.html" class="px-4 py-2 bg-pink-100 text-pink-600 rounded text-sm font-semibold hover:bg-pink-200">Học ngay</a>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-white border border-gray-200 rounded hover:border-pink-300 transition">
+                            <div class="flex items-center">
+                                <span class="w-10 h-10 bg-gray-100 text-gray-400 flex items-center justify-center rounded-full mr-4">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                                </span>
+                                <div>
+                                    <span class="block font-medium text-gray-800">Video 2: Kỹ thuật cắm hoa theo vòm</span>
+                                    <span class="text-xs text-red-500 font-medium">Premium</span>
+                                </div>
+                            </div>
+                            <a href="video-player.html" class="px-4 py-2 bg-gray-100 text-gray-600 rounded text-sm font-semibold hover:bg-gray-200">Khóa</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Lesson Card 2 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80" alt="Bài 2" class="w-full h-48 object-cover opacity-90">
-                    <span class="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded flex items-center">
-                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
-                        Premium
-                    </span>
-                </div>
-                <div class="p-6 flex-grow flex flex-col">
-                    <div class="text-sm text-pink-500 font-semibold mb-2">Bài 2</div>
-                    <h2 class="text-xl font-bold mb-2">Kỹ thuật cắm hoa dáng tròn cơ bản</h2>
-                    <p class="text-gray-600 mb-4 flex-grow">Thực hành cắm lẵng hoa dáng tròn đều, phối hợp màu sắc hài hòa để tặng sinh nhật, sự kiện.</p>
-                    <a href="video-player.html" class="inline-block bg-pink-50 text-pink-600 border border-pink-200 px-4 py-2 rounded font-semibold hover:bg-pink-100 transition w-full text-center mt-auto">Xem bài học</a>
+            <!-- Bài 2 -->
+            <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                <button onclick="toggleAccordion('lesson2')" class="w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-pink-50 transition">
+                    <h2 class="text-xl font-bold text-gray-800">Bài 2: Cắm hoa cổng vuông</h2>
+                    <svg id="icon-lesson2" class="w-6 h-6 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="lesson2" class="accordion-content bg-gray-50 border-t border-gray-100 open">
+                    <!-- Added open class by default to demo the image requirement -->
+                    <div class="p-6 space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-white border border-gray-200 rounded hover:border-pink-300 transition">
+                            <div class="flex items-center">
+                                <span class="w-10 h-10 bg-gray-100 text-gray-400 flex items-center justify-center rounded-full mr-4">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                                </span>
+                                <div>
+                                    <span class="block font-medium text-gray-800">Video 1: Đo đạc và dựng khung vuông</span>
+                                    <span class="text-xs text-red-500 font-medium">Premium</span>
+                                </div>
+                            </div>
+                            <a href="video-player.html" class="px-4 py-2 bg-gray-100 text-gray-600 rounded text-sm font-semibold hover:bg-gray-200">Khóa</a>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-white border border-gray-200 rounded hover:border-pink-300 transition">
+                            <div class="flex items-center">
+                                <span class="w-10 h-10 bg-gray-100 text-gray-400 flex items-center justify-center rounded-full mr-4">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                                </span>
+                                <div>
+                                    <span class="block font-medium text-gray-800">Video 2: Phối hợp hoa lá dáng vuông</span>
+                                    <span class="text-xs text-red-500 font-medium">Premium</span>
+                                </div>
+                            </div>
+                            <a href="video-player.html" class="px-4 py-2 bg-gray-100 text-gray-600 rounded text-sm font-semibold hover:bg-gray-200">Khóa</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Lesson Card 3 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1457089328109-e5d9bd499191?auto=format&fit=crop&w=600&q=80" alt="Bài 3" class="w-full h-48 object-cover opacity-90">
-                    <span class="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded flex items-center">
-                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
-                        Premium
-                    </span>
+            <!-- Bài 3 -->
+            <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                <button onclick="toggleAccordion('lesson3')" class="w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-pink-50 transition">
+                    <h2 class="text-xl font-bold text-gray-800">Bài 3: Cắm hoa cổng ngà voi</h2>
+                    <svg id="icon-lesson3" class="w-6 h-6 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="lesson3" class="accordion-content bg-gray-50 border-t border-gray-100">
+                    <div class="p-6 space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-white border border-gray-200 rounded hover:border-pink-300 transition">
+                            <div class="flex items-center">
+                                <span class="w-10 h-10 bg-gray-100 text-gray-400 flex items-center justify-center rounded-full mr-4">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                                </span>
+                                <div>
+                                    <span class="block font-medium text-gray-800">Video 1: Hướng dẫn chi tiết</span>
+                                    <span class="text-xs text-red-500 font-medium">Premium</span>
+                                </div>
+                            </div>
+                            <a href="video-player.html" class="px-4 py-2 bg-gray-100 text-gray-600 rounded text-sm font-semibold hover:bg-gray-200">Khóa</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="p-6 flex-grow flex flex-col">
-                    <div class="text-sm text-pink-500 font-semibold mb-2">Bài 3</div>
-                    <h2 class="text-xl font-bold mb-2">Nghệ thuật phối màu và tạo điểm nhấn</h2>
-                    <p class="text-gray-600 mb-4 flex-grow">Cách chọn hoa phụ, lá đệm và kỹ thuật tạo chiều sâu cho lẵng hoa mang phong cách Hàn Quốc.</p>
-                    <a href="video-player.html" class="inline-block bg-pink-50 text-pink-600 border border-pink-200 px-4 py-2 rounded font-semibold hover:bg-pink-100 transition w-full text-center mt-auto">Xem bài học</a>
+            </div>
+
+            <!-- Bài 4 -->
+            <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                <button onclick="toggleAccordion('lesson4')" class="w-full px-6 py-4 flex justify-between items-center focus:outline-none hover:bg-pink-50 transition">
+                    <h2 class="text-xl font-bold text-gray-800">Bài 4: Cắm hoa theo mô hình</h2>
+                    <svg id="icon-lesson4" class="w-6 h-6 text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="lesson4" class="accordion-content bg-gray-50 border-t border-gray-100">
+                    <div class="p-6 space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-white border border-gray-200 rounded hover:border-pink-300 transition">
+                            <div class="flex items-center">
+                                <span class="w-10 h-10 bg-gray-100 text-gray-400 flex items-center justify-center rounded-full mr-4">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                                </span>
+                                <div>
+                                    <span class="block font-medium text-gray-800">Video 1: Thiết kế mô hình</span>
+                                    <span class="text-xs text-red-500 font-medium">Premium</span>
+                                </div>
+                            </div>
+                            <a href="video-player.html" class="px-4 py-2 bg-gray-100 text-gray-600 rounded text-sm font-semibold hover:bg-gray-200">Khóa</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -118,5 +204,22 @@
         </div>
     </footer>
 
+    <script>
+        // Mở sẵn Bài 2 theo yêu cầu thiết kế ảnh mẫu
+        document.getElementById('icon-lesson2').classList.add('rotate-180');
+
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                icon.classList.remove('rotate-180');
+            } else {
+                content.classList.add('open');
+                icon.classList.add('rotate-180');
+            }
+        }
+    </script>
 </body>
 </html>

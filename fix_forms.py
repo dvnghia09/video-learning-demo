@@ -1,79 +1,31 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng ký tài khoản</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        html { font-size: 18px; }
-        body { font-family: 'Roboto', sans-serif; letter-spacing: 0.02em; }
-    </style>
+import re
 
-    <style>
-        .zalo-floating-btn {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-        }
+with open('/Users/nghiadv/Projects/video-learning-demo/login.html', 'r', encoding='utf-8') as f:
+    login_html = f.read()
 
-        @media (max-width: 768px) {
-            .zalo-floating-btn {
-                bottom: 16px;
-                right: 16px;
-            }
-        }
+# Fix login.html to use Phone instead of Email
+login_html = login_html.replace('type="email"', 'type="tel" pattern="[0-9]*"')
+login_html = login_html.replace('Địa chỉ Email', 'Số điện thoại')
+login_html = login_html.replace('Email (ví dụ: demo@gmail.com)', 'Số điện thoại')
+login_html = login_html.replace('id="email-address"', 'id="phone-number"')
+login_html = login_html.replace('name="email"', 'name="phone"')
+login_html = login_html.replace('autocomplete="email"', 'autocomplete="tel"')
 
-        .zalo-icon-wrap {
-            width: 45px;
-            height: 45px;
-            background-color: #0068ff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            animation: zalo-pulse 2s infinite;
-        }
+# Ensure link to register is present at the bottom of the form
+link_register = """
+                <div class="text-center mt-4 text-sm text-gray-600">
+                    Chưa có tài khoản? <a href="register.html" class="text-pink-600 hover:text-pink-500 font-medium">Đăng ký ngay</a>
+                </div>
+"""
+if "Chưa có tài khoản?" not in login_html:
+    login_html = login_html.replace('</form>', link_register + '            </form>')
 
-        .zalo-icon-wrap img {
-            width: 35px;
-            height: 35px;
-            object-fit: contain;
-            animation: zalo-shake 2s infinite ease-in-out;
-        }
+with open('/Users/nghiadv/Projects/video-learning-demo/login.html', 'w', encoding='utf-8') as f:
+    f.write(login_html)
 
-        @keyframes zalo-pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(0, 104, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0); }
-        }
 
-        @keyframes zalo-shake {
-            0%, 100% { transform: rotate(0deg); }
-            10%, 30%, 50%, 70%, 90% { transform: rotate(-10deg) scale(1.1); }
-            20%, 40%, 60%, 80% { transform: rotate(10deg) scale(1.1); }
-        }
-    </style>
-</head>
-<body class="bg-gray-100 h-screen flex flex-col">
-
-    <nav class="bg-white shadow-md border-b border-gray-100 w-full">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <a href="index.html" class="text-xl font-bold text-pink-500">FloralArt</a>
-            </div>
-        </div>
-    </nav>
-
-    <div class="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-lg">
+# Rewrite register.html completely based on login.html layout but with proper fields
+register_form = """
             <div>
                 <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
                     Đăng ký tài khoản
@@ -112,15 +64,18 @@
                     Đã có tài khoản? <a href="login.html" class="text-pink-600 hover:text-pink-500 font-medium">Đăng nhập ngay</a>
                 </div>
             </form>
-        </div>
-    </div>
+"""
 
+with open('/Users/nghiadv/Projects/video-learning-demo/register.html', 'r', encoding='utf-8') as f:
+    register_html = f.read()
 
-    <!-- Floating Zalo -->
-    <a href="https://zalo.me/0123456789" target="_blank" class="zalo-floating-btn">
-        <div class="zalo-icon-wrap">
-            <div style="color:white; font-weight:900; font-size:14px; font-family:Arial, sans-serif; letter-spacing:0.5px; animation: zalo-shake 2s infinite ease-in-out;">Zalo</div>
-        </div>
-    </a>
-</body>
-</html>
+# Replace the inner block of max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-lg
+pattern = re.compile(r'<div>\s*<h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">.*?</form>', re.DOTALL)
+register_html = pattern.sub(register_form.strip(), register_html)
+register_html = register_html.replace('<title>Đăng nhập</title>', '<title>Đăng ký tài khoản</title>')
+register_html = register_html.replace('<title>Đăng nhập tài khoản</title>', '<title>Đăng ký tài khoản</title>')
+
+with open('/Users/nghiadv/Projects/video-learning-demo/register.html', 'w', encoding='utf-8') as f:
+    f.write(register_html)
+
+print("Updated forms in login.html and register.html")

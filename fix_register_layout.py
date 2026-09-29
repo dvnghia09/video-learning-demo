@@ -1,68 +1,4 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng ký tài khoản</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        html { font-size: 18px; }
-        body { font-family: 'Roboto', sans-serif; letter-spacing: 0.02em; }
-    </style>
-
-    <style>
-        .zalo-floating-btn {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-        }
-
-        @media (max-width: 768px) {
-            .zalo-floating-btn {
-                bottom: 16px;
-                right: 16px;
-            }
-        }
-
-        .zalo-icon-wrap {
-            width: 45px;
-            height: 45px;
-            background-color: #0068ff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            animation: zalo-pulse 2s infinite;
-        }
-
-        .zalo-icon-wrap img {
-            width: 35px;
-            height: 35px;
-            object-fit: contain;
-            animation: zalo-shake 2s infinite ease-in-out;
-        }
-
-        @keyframes zalo-pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(0, 104, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0); }
-        }
-
-        @keyframes zalo-shake {
-            0%, 100% { transform: rotate(0deg); }
-            10%, 30%, 50%, 70%, 90% { transform: rotate(-10deg) scale(1.1); }
-            20%, 40%, 60%, 80% { transform: rotate(10deg) scale(1.1); }
-        }
-    </style>
-</head>
-<body class="bg-gray-50 min-h-screen flex flex-col font-sans">
+register_body = """<body class="bg-gray-50 min-h-screen flex flex-col font-sans">
     <div class="flex-grow flex items-center justify-center p-4">
         <div class="max-w-md w-full bg-white p-6 sm:p-8 rounded-2xl shadow-xl">
             <!-- Logo & Title -->
@@ -108,5 +44,16 @@
             </form>
         </div>
     </div>
-</body>
-</html>
+</body>"""
+
+import re
+
+with open('/Users/nghiadv/Projects/video-learning-demo/register.html', 'r', encoding='utf-8') as f:
+    content = f.read()
+
+content = re.sub(r'<body.*</body>', register_body, content, flags=re.DOTALL)
+
+with open('/Users/nghiadv/Projects/video-learning-demo/register.html', 'w', encoding='utf-8') as f:
+    f.write(content)
+
+print("Updated register.html layout")

@@ -1,0 +1,1 @@
+@include('errors._friendly', ['code' => '403', 'icon' => '🔒', 'heading' => 'Bạn không có quyền xem trang này', 'text' => 'Trang này chỉ dành cho người có quyền truy cập. Nếu bạn nghĩ đây là nhầm lẫn, hãy liên hệ quản trị viên.'])

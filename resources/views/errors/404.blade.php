@@ -1,0 +1,1 @@
+@include('errors._friendly', ['code' => '404', 'icon' => '🌸', 'heading' => 'Không tìm thấy trang', 'text' => 'Trang bạn tìm không tồn tại hoặc đã được chuyển đi nơi khác. Bạn hãy quay về trang chủ hoặc xem danh sách bài học nhé.'])

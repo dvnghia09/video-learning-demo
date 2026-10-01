@@ -468,7 +468,9 @@
     next.addEventListener('click', () => nudge(1));
 
     // ---------- Tạm dừng khi rê chuột / lấy nét / chạm; kéo bằng chuột ----------
-    root.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') hovering = true; });
+    // Chỉ dừng khi chuột nằm trên một ảnh; rê ra khoảng trống hay tiêu đề thì slide vẫn chạy
+    track.addEventListener('pointerover', (e) => { if (e.pointerType === 'mouse' && e.target.closest('.gal-card')) hovering = true; });
+    track.addEventListener('pointerout', (e) => { if (e.pointerType === 'mouse' && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('.gal-card'))) hovering = false; });
     root.addEventListener('pointerleave', () => { hovering = false; dragging = false; track.classList.remove('is-dragging'); });
     root.addEventListener('focusin', () => hold(6000));
     track.addEventListener('touchstart', () => hold(4000), { passive: true });

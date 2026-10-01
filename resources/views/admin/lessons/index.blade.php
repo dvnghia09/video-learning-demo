@@ -105,8 +105,8 @@
 
 <div class="mt-6">{{ $items->links() }}</div>
 
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{{ asset('vendor/sortable/Sortable.min.js') }}"></script>
+<script src="{{ asset('vendor/axios/axios.min.js') }}"></script>
 <script>
     // Kéo thả để sắp xếp: lưu ngay bằng AJAX, không tải lại trang. Lỗi thì trả về vị trí cũ.
     (function () {

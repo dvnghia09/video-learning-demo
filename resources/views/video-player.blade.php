@@ -23,7 +23,7 @@
 @endpush
 
 @section('content')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css">
+<link rel="stylesheet" href="{{ asset('vendor/plyr/plyr.css') }}">
 <style>
     :root { --plyr-color-main: #d97706; --plyr-video-background: transparent; --plyr-menu-radius: 12px; --plyr-control-radius: 8px; }
     #stage, #stage .plyr, #stage .plyr__video-wrapper, #stage video { width: 100%; height: 100%; }
@@ -240,8 +240,8 @@
 @include('partials.video-status-poller')
 
 @if($canWatch && $video->status === 'ready' && $video->hls_path)
-<script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
-<script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.polyfilled.js"></script>
+<script src="{{ asset('vendor/hls/hls.min.js') }}"></script>
+<script src="{{ asset('vendor/plyr/plyr.polyfilled.min.js') }}"></script>
 <script>
 (function () {
     const SRC = @js(route('stream', [$video, 'master.m3u8']));
@@ -269,6 +269,8 @@
     let hls = null, player = null;
 
     const baseOptions = {
+        iconUrl: @js(asset('vendor/plyr/plyr.svg')),
+        blankVideo: '',
         controls: ['play-large', 'rewind', 'play', 'fast-forward', 'progress', 'current-time', 'duration', 'mute', 'volume', 'settings', 'pip', 'airplay', 'fullscreen'],
         settings: ['quality', 'speed'],
         seekTime: 10,

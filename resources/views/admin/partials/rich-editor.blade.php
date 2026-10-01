@@ -1,7 +1,7 @@
 {{-- Trình soạn thảo TinyMCE (miễn phí, GPL). Ảnh chèn vào bài được tải lên server và lưu thành LINK, không nhúng base64.
      Dùng: @include('admin.partials.rich-editor', ['selector' => '#content']) --}}
 @once
-<script src="https://cdn.jsdelivr.net/npm/tinymce@7/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="{{ asset('vendor/tinymce/tinymce.min.js') }}"></script>
 @endonce
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
         selector: @js($selector),
         license_key: 'gpl',
         language: 'vi',
-        language_url: 'https://cdn.jsdelivr.net/npm/tinymce-i18n/langs7/vi.js',
+        base_url: @js(asset('vendor/tinymce')), suffix: '.min',
+        language_url: @js(asset('vendor/tinymce/langs/vi.js')),
         height: {{ $height ?? 520 }},
         menubar: false,
         branding: false,

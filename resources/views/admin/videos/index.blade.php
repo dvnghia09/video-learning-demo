@@ -49,7 +49,7 @@
 <div class="mt-6">{{ $items->links() }}</div>
 
 @if($pendingIds->isNotEmpty())
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{{ asset('vendor/axios/axios.min.js') }}"></script>
 <script>
     // Có video đang xử lý: hỏi trạng thái bằng AJAX, chỉ cập nhật nhãn, không tải lại trang
     (function () {

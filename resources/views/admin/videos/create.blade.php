@@ -66,7 +66,7 @@
     </form>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{{ asset('vendor/axios/axios.min.js') }}"></script>
 <script>
     function videoUploader({ maxMb, action, listUrl }) {
         return {
